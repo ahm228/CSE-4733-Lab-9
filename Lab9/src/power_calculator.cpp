@@ -65,7 +65,7 @@ void PowerCalculator::thread2_task() {
         // c. If the integer value and power value are not zero THEN
         if (number_pair.first != 0 && number_pair.second != 0) {
             auto result = std::pow(number_pair.first, number_pair.second); // 1) Calculate the power value
-            std::cout << "Power of " << number_pair.first << " raised to the " << number_pair.second << " is " << result << std::endl; // 2) Write power results to the console
+            std::cout << number_pair.first << " to the power of " << number_pair.second << " is " << result << std::endl; // 2) Write power results to the console
         }
     }
 }
