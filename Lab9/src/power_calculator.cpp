@@ -22,6 +22,11 @@ void PowerCalculator::start() {
 void PowerCalculator::thread1_task() {
 
 
+
+
+
+}
+
     // TODO (part 1):
     // 1. Create an instance of std::random_device
     // 2. Create an instance of std::mt19937
@@ -44,12 +49,15 @@ void PowerCalculator::thread1_task() {
 
     // End TODO (part 1)
 
-
-}
-
 // Pulls the number pairs from the queue, calculates the base raised to the power, and prints the result
 void PowerCalculator::thread2_task() {
 
+
+
+
+}
+
+}
 
     // TODO (part 2):
     // 1. While the is_running is true and the queue is not empty
@@ -61,7 +69,3 @@ void PowerCalculator::thread2_task() {
 
 
     // End TODO (part 2)
-
-}
-
-}
