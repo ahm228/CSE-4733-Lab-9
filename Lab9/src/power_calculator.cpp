@@ -45,12 +45,9 @@ void PowerCalculator::thread1_task() {
     is_running = false; // Set is_running to false
 }
 
-    // TODO (part 1):
-    // 7. Create elapsed time variable using std::chrono::duration
-
 // Pulls the number pairs from the queue, calculates the base raised to the power, and prints the result
 void PowerCalculator::thread2_task() {
-    while (is_running || !data_queue.empty()) { // While is_running is true and the queue is not empty //FIXME
+    while (is_running && !data_queue.empty()) {
         std::pair<int, int> number_pair;
         {
             std::lock_guard<std::mutex> guard(mtx); // Create an instance of std::lock_guard
@@ -72,6 +69,3 @@ void PowerCalculator::thread2_task() {
 }
 
 }
-
-    // TODO (part 2):
-    // 1. While the is_running is true and the queue is not empty
