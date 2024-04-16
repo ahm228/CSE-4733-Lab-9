@@ -25,8 +25,9 @@ void PowerCalculator::thread1_task() {
     std::uniform_int_distribution<> dist(1, 100);       // Create a uniform integer distribution for the integer values (1 - 100)
     std::uniform_int_distribution<> power_dist(1, 10);  // Create a uniform integer distribution for the power value (1-10)
 
-    auto start = std::chrono::high_resolution_clock::now(); // Capture the start time
     auto limit = std::chrono::microseconds(50);             // Set the time limit to 50 microseconds
+    auto start = std::chrono::high_resolution_clock::now(); // Capture the start time
+    
 
     while (true) {
         {
@@ -47,7 +48,7 @@ void PowerCalculator::thread1_task() {
 
 // Pulls the number pairs from the queue, calculates the base raised to the power, and prints the result
 void PowerCalculator::thread2_task() {
-    while (is_running && !data_queue.empty()) {
+    while (is_running || !data_queue.empty()) {
         std::pair<int, int> number_pair;
         {
             std::lock_guard<std::mutex> guard(mtx); // Create an instance of std::lock_guard
@@ -60,7 +61,6 @@ void PowerCalculator::thread2_task() {
             }
         } // Lock is released here
 
-        // If the integer value and power value are not zero THEN
         if (number_pair.first != 0 && number_pair.second != 0) {
             auto result = std::pow(number_pair.first, number_pair.second); // Calculate the power value
             std::cout << number_pair.first << " to the power of " << number_pair.second << " is " << result << std::endl; // Write power results to the console
